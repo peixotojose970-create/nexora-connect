@@ -1,3 +1,4 @@
+import { TransformationSection } from "@/components/TransformationSection";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
@@ -161,10 +162,10 @@ function NexoraLandingPage() {
               Sobre nós
             </a>
             <a
-              href="#resultados"
+              href="#transformacao"
               className="hover:text-zinc-950 transition-colors"
             >
-              Resultados
+              Antes e Depois
             </a>
             <a
               href="#contato"
@@ -245,11 +246,11 @@ function NexoraLandingPage() {
                 Sobre nós
               </a>
               <a
-                href="#resultados"
+                href="#transformacao"
                 onClick={closeMenu}
                 className="py-1.5 border-b border-zinc-50 hover:text-[#2563EB] transition-colors"
               >
-                Resultados
+                Antes e Depois
               </a>
               <a
                 href="#contato"
@@ -862,61 +863,10 @@ function NexoraLandingPage() {
       </section>
 
       {/* ==================================================
-          RESULTADOS & COMPROMISSO
+          TRANSFORMAÇÃO VISUAL (ANTES E DEPOIS) & RESULTADOS
           ================================================== */}
-      <section id="resultados" className="py-24 bg-zinc-50/70 border-t border-zinc-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-              Foco no Negócio
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight mb-4">
-              O que muda quando sua empresa tem a presença correta.
-            </h2>
-            <p className="text-base text-zinc-600">
-              Qualidade visual não é detalhe cosmético: é o fator decisivo para a percepção de valor.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Percepção Imediata de Confiança",
-                desc: "Clientes em potencial julgam a solidez do seu serviço nos primeiros segundos de navegação.",
-                highlight: "+ Credibilidade",
-              },
-              {
-                title: "Conversão Direta sem Fricção",
-                desc: "Botões de WhatsApp claros, navegação intuitiva e estrutura que conduz à tomada de decisão.",
-                highlight: "+ Contatos",
-              },
-              {
-                title: "Destaque Visual Frente aos Concorrentes",
-                desc: "Saia do padrão amador de mercado com estética editorial e acabamento impecável.",
-                highlight: "+ Valor Percebido",
-              },
-            ].map((res) => (
-              <div
-                key={res.title}
-                className="bg-white p-8 rounded-2xl border border-zinc-200/80 shadow-sm flex flex-col justify-between"
-              >
-                <div>
-                  <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-[#2563EB] text-xs font-semibold mb-4">
-                    {res.highlight}
-                  </span>
-                  <h3 className="text-lg font-bold text-zinc-950 mb-3">
-                    {res.title}
-                  </h3>
-                  <p className="text-sm text-zinc-600 leading-relaxed">
-                    {res.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <div id="resultados" className="sr-only" aria-hidden="true" />
+      <TransformationSection id="transformacao" />
 
       {/* ==================================================
           CTA FINAL & CONTATO
@@ -1004,8 +954,8 @@ function NexoraLandingPage() {
             <a href="#sobre-nos" className="hover:text-zinc-900 transition-colors">
               Sobre nós
             </a>
-            <a href="#resultados" className="hover:text-zinc-900 transition-colors">
-              Resultados
+            <a href="#transformacao" className="hover:text-zinc-900 transition-colors">
+              Antes e Depois
             </a>
             <a href="#contato" className="hover:text-zinc-900 transition-colors">
               Contato
