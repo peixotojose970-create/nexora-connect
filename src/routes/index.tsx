@@ -1,4 +1,7 @@
 import { TransformationSection } from "@/components/TransformationSection";
+import { ContactSection } from "@/components/ContactSection";
+import { FinalCtaSection } from "@/components/FinalCtaSection";
+import { ReviewsSection } from "@/components/ReviewsSection";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
@@ -168,6 +171,12 @@ function NexoraLandingPage() {
               Antes e Depois
             </a>
             <a
+              href="#avaliacoes"
+              className="hover:text-zinc-950 transition-colors"
+            >
+              Avaliações
+            </a>
+            <a
               href="#contato"
               className="hover:text-zinc-950 transition-colors"
             >
@@ -251,6 +260,13 @@ function NexoraLandingPage() {
                 className="py-1.5 border-b border-zinc-50 hover:text-[#2563EB] transition-colors"
               >
                 Antes e Depois
+              </a>
+              <a
+                href="#avaliacoes"
+                onClick={closeMenu}
+                className="py-1.5 border-b border-zinc-50 hover:text-[#2563EB] transition-colors"
+              >
+                Avaliações
               </a>
               <a
                 href="#contato"
@@ -869,50 +885,19 @@ function NexoraLandingPage() {
       <TransformationSection id="transformacao" />
 
       {/* ==================================================
-          CTA FINAL & CONTATO
+          1. AVALIAÇÕES / FEEDBACKS
           ================================================== */}
-      <section id="contato" className="py-24 sm:py-28 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-zinc-950 rounded-3xl p-8 sm:p-14 lg:p-16 text-white relative overflow-hidden shadow-2xl">
-            {/* Decoração sutil de fundo */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#2563EB]/30 via-indigo-900/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <ReviewsSection id="avaliacoes" />
 
-            <div className="max-w-2xl relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/40 border border-blue-500/30 text-blue-300 text-xs font-semibold mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Disponível para novos projetos
-              </div>
+      {/* ==================================================
+          2. CTA FINAL
+          ================================================== */}
+      <FinalCtaSection id="cta-final" whatsappLink={WHATSAPP_LINK} />
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-6">
-                Pronto para transformar a imagem digital do seu negócio?
-              </h2>
-
-              <p className="text-base sm:text-lg text-zinc-300 leading-relaxed mb-8">
-                Fale agora com a equipe da <strong>NEXORA</strong> pelo WhatsApp. Entendemos sua demanda e
-                enviamos uma proposta personalizada para seu projeto.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                <a
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#2563EB] hover:bg-blue-500 text-white font-medium text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.98]"
-                >
-                  <MessageCircle className="w-5 h-5 text-emerald-300" />
-                  <span>Falar com a NEXORA</span>
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </a>
-
-                <div className="text-xs text-zinc-400 flex items-center justify-center sm:justify-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Resposta rápida no horário comercial</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ==================================================
+          3. CONTATO
+          ================================================== */}
+      <ContactSection id="contato" />
 
       {/* ==================================================
           FOOTER
@@ -956,6 +941,9 @@ function NexoraLandingPage() {
             </a>
             <a href="#transformacao" className="hover:text-zinc-900 transition-colors">
               Antes e Depois
+            </a>
+            <a href="#avaliacoes" className="hover:text-zinc-900 transition-colors">
+              Avaliações
             </a>
             <a href="#contato" className="hover:text-zinc-900 transition-colors">
               Contato
