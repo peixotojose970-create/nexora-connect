@@ -1,4 +1,8 @@
+import { QuickBenefitsSection } from "@/components/QuickBenefitsSection";
+import { VisualShowcaseSection } from "@/components/VisualShowcaseSection";
 import { TransformationSection } from "@/components/TransformationSection";
+import { ReviewsSection } from "@/components/ReviewsSection";
+import { FinalCtaSection } from "@/components/FinalCtaSection";
 import { SiteFooter } from "@/components/SiteFooter";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -64,9 +68,8 @@ function NexoraLandingPage() {
 
   return (
     <div className="min-h-screen bg-white text-zinc-950 font-sans selection:bg-[#2563EB] selection:text-white antialiased relative">
-      {/* Elementos gráficos abstratos muito discretos no fundo global */}
+      {/* Elementos gráficos abstratos discretos no fundo */}
       <div className="fixed inset-0 pointer-events-none -z-20 overflow-hidden">
-        {/* Curvas e linhas extremamente sutis */}
         <svg
           className="absolute -top-24 right-0 w-[600px] h-[600px] text-zinc-100/60"
           viewBox="0 0 600 600"
@@ -99,7 +102,6 @@ function NexoraLandingPage() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
-          {/* Logo NEXORA */}
           <a
             href="#inicio"
             className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded"
@@ -120,7 +122,6 @@ function NexoraLandingPage() {
             </span>
           </a>
 
-          {/* Links de navegação desktop */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600">
             <a href="#inicio" className="hover:text-zinc-950 transition-colors">
               Início
@@ -134,9 +135,11 @@ function NexoraLandingPage() {
             <a href="#como-funciona" className="hover:text-zinc-950 transition-colors">
               Como funciona
             </a>
+            <a href="#feedbacks" className="hover:text-zinc-950 transition-colors">
+              Feedbacks
+            </a>
           </nav>
 
-          {/* Um único botão */}
           <div className="hidden md:flex items-center">
             <a
               href={WHATSAPP_LINK}
@@ -148,7 +151,6 @@ function NexoraLandingPage() {
             </a>
           </div>
 
-          {/* Botão Mobile Hambúrguer */}
           <div className="flex md:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -160,7 +162,6 @@ function NexoraLandingPage() {
           </div>
         </div>
 
-        {/* Menu Mobile */}
         {mobileMenuOpen && (
           <div className="md:hidden border-b border-zinc-100 bg-white px-6 py-5 space-y-4">
             <nav className="flex flex-col space-y-3 text-base font-medium text-zinc-800">
@@ -175,6 +176,9 @@ function NexoraLandingPage() {
               </a>
               <a href="#como-funciona" onClick={closeMenu} className="py-1">
                 Como funciona
+              </a>
+              <a href="#feedbacks" onClick={closeMenu} className="py-1">
+                Feedbacks
               </a>
             </nav>
             <div className="pt-2">
@@ -197,11 +201,10 @@ function NexoraLandingPage() {
           ================================================== */}
       <section
         id="inicio"
-        className="relative pt-36 sm:pt-40 lg:pt-44 pb-20 sm:pb-28 lg:pb-32 overflow-hidden"
+        className="relative pt-36 sm:pt-40 lg:pt-44 pb-16 sm:pb-24 lg:pb-28 overflow-hidden"
       >
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Coluna Texto */}
             <div className="lg:col-span-6 flex flex-col items-start">
               <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4 block">
                 SOLUÇÕES DIGITAIS PARA EMPRESAS
@@ -233,7 +236,6 @@ function NexoraLandingPage() {
               </div>
             </div>
 
-            {/* Coluna Imagem Grande e Protagonista */}
             <div className="lg:col-span-6">
               <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-zinc-200/80 bg-zinc-100">
                 <img
@@ -249,11 +251,15 @@ function NexoraLandingPage() {
       </section>
 
       {/* ==================================================
-          3. SERVIÇOS
+          3. BENEFÍCIOS RÁPIDOS
+          ================================================== */}
+      <QuickBenefitsSection id="beneficios" />
+
+      {/* ==================================================
+          4. SOLUÇÕES / SERVIÇOS
           ================================================== */}
       <section id="servicos" className="py-24 sm:py-32 bg-white border-t border-zinc-100">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Cabeçalho */}
           <div className="max-w-2xl mb-14 sm:mb-20">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-4">
               Soluções digitais para empresas.
@@ -263,11 +269,9 @@ function NexoraLandingPage() {
             </p>
           </div>
 
-          {/* Composição visual elegante dos 5 serviços com imagens protagonistas */}
           <div className="space-y-12 sm:space-y-16">
-            {/* Bloco 1: Duas soluções principais em destaque com imagens grandes */}
+            {/* Bloco 1: Criação de Sites e Landing Pages */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
-              {/* 1. Criação de Sites */}
               <div className="group rounded-2xl sm:rounded-3xl border border-zinc-200/80 overflow-hidden bg-white hover:border-zinc-300 transition-colors flex flex-col">
                 <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-zinc-100">
                   <img
@@ -292,7 +296,6 @@ function NexoraLandingPage() {
                 </div>
               </div>
 
-              {/* 2. Landing Pages */}
               <div className="group rounded-2xl sm:rounded-3xl border border-zinc-200/80 overflow-hidden bg-white hover:border-zinc-300 transition-colors flex flex-col">
                 <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-zinc-100">
                   <img
@@ -318,9 +321,8 @@ function NexoraLandingPage() {
               </div>
             </div>
 
-            {/* Bloco 2: Três soluções complementares com ritmo visual próprio */}
+            {/* Bloco 2: Cardápios Digitais, Imagens e Conteúdo, Materiais de Divulgação */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
-              {/* 3. Cardápios Digitais */}
               <div className="group rounded-2xl sm:rounded-3xl border border-zinc-200/80 overflow-hidden bg-white hover:border-zinc-300 transition-colors flex flex-col">
                 <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-zinc-100">
                   <img
@@ -332,18 +334,17 @@ function NexoraLandingPage() {
                 </div>
                 <div className="p-6 sm:p-8 flex-1 flex flex-col">
                   <span className="text-xs font-mono font-semibold text-[#2563EB] tracking-wider uppercase block mb-2">
-                    03 &bull; Gastronomia &amp; Mobile
+                    03 &bull; Praticidade
                   </span>
                   <h3 className="text-xl sm:text-2xl font-bold text-zinc-950 tracking-tight mb-2">
                     Cardápios Digitais
                   </h3>
                   <p className="text-sm text-zinc-600 leading-relaxed">
-                    Experiências fluidas e ágeis no celular para valorizar a apresentação do seu cardápio.
+                    Experiências dinâmicas e fluidas no celular para estabelecimentos gastronômicos.
                   </p>
                 </div>
               </div>
 
-              {/* 4. Imagens e Conteúdo Visual */}
               <div className="group rounded-2xl sm:rounded-3xl border border-zinc-200/80 overflow-hidden bg-white hover:border-zinc-300 transition-colors flex flex-col">
                 <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-zinc-100">
                   <img
@@ -366,7 +367,6 @@ function NexoraLandingPage() {
                 </div>
               </div>
 
-              {/* 5. Materiais de Divulgação */}
               <div className="group rounded-2xl sm:rounded-3xl border border-zinc-200/80 overflow-hidden bg-white hover:border-zinc-300 transition-colors flex flex-col">
                 <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-zinc-100">
                   <img
@@ -393,13 +393,15 @@ function NexoraLandingPage() {
         </div>
       </section>
 
+      {/* Destaque visual da NEXORA integrado com pouquíssimo texto */}
+      <VisualShowcaseSection />
+
       {/* ==================================================
-          4. SOBRE A NEXORA
+          5. SOBRE A NEXORA
           ================================================== */}
       <section id="sobre" className="py-24 sm:py-32 bg-white border-t border-zinc-100">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Texto */}
             <div className="lg:col-span-6">
               <h2 className="text-3xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-6">
                 Sobre a NEXORA
@@ -410,7 +412,6 @@ function NexoraLandingPage() {
               </p>
             </div>
 
-            {/* Imagem Grande */}
             <div className="lg:col-span-6">
               <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-zinc-200/80 bg-zinc-100">
                 <img
@@ -426,7 +427,7 @@ function NexoraLandingPage() {
       </section>
 
       {/* ==================================================
-          5. ANTES E DEPOIS
+          6. ANTES E DEPOIS
           ================================================== */}
       <TransformationSection
         id="antes-depois"
@@ -435,7 +436,7 @@ function NexoraLandingPage() {
       />
 
       {/* ==================================================
-          6. COMO FUNCIONA
+          7. COMO FUNCIONA
           ================================================== */}
       <section id="como-funciona" className="py-24 sm:py-32 bg-white border-t border-zinc-100">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -445,16 +446,13 @@ function NexoraLandingPage() {
             </h2>
           </div>
 
-          {/* Quatro etapas com linha simples conectando */}
           <div className="relative">
-            {/* Linha horizontal no desktop */}
             <div
               className="hidden lg:block absolute top-7 left-[8%] right-[8%] h-px bg-zinc-200 -z-0"
               aria-hidden="true"
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 relative z-10">
-              {/* 01 Conversa */}
               <div className="flex flex-col items-start">
                 <div className="w-14 h-14 rounded-2xl bg-white border border-zinc-200 shadow-sm flex items-center justify-center font-mono text-base font-bold text-zinc-950 mb-6">
                   01
@@ -467,7 +465,6 @@ function NexoraLandingPage() {
                 </p>
               </div>
 
-              {/* 02 Estratégia */}
               <div className="flex flex-col items-start">
                 <div className="w-14 h-14 rounded-2xl bg-white border border-zinc-200 shadow-sm flex items-center justify-center font-mono text-base font-bold text-zinc-950 mb-6">
                   02
@@ -480,7 +477,6 @@ function NexoraLandingPage() {
                 </p>
               </div>
 
-              {/* 03 Criação */}
               <div className="flex flex-col items-start">
                 <div className="w-14 h-14 rounded-2xl bg-white border border-zinc-200 shadow-sm flex items-center justify-center font-mono text-base font-bold text-zinc-950 mb-6">
                   03
@@ -493,7 +489,6 @@ function NexoraLandingPage() {
                 </p>
               </div>
 
-              {/* 04 Entrega */}
               <div className="flex flex-col items-start">
                 <div className="w-14 h-14 rounded-2xl bg-zinc-950 text-white shadow-sm flex items-center justify-center font-mono text-base font-bold mb-6">
                   04
@@ -511,7 +506,17 @@ function NexoraLandingPage() {
       </section>
 
       {/* ==================================================
-          7. FOOTER
+          8. FEEDBACKS / PROVA SOCIAL
+          ================================================== */}
+      <ReviewsSection id="feedbacks" />
+
+      {/* ==================================================
+          9. CTA FINAL
+          ================================================== */}
+      <FinalCtaSection id="cta-final" whatsappLink={WHATSAPP_LINK} />
+
+      {/* ==================================================
+          10. FOOTER
           ================================================== */}
       <SiteFooter />
     </div>

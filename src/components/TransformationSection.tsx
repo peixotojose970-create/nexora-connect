@@ -23,7 +23,7 @@ export function TransformationSection({
   const [sliderPos, setSliderPos] = useState<number>(50);
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
-  const handleMove = useCallback((clientX: number) => {
+  const updatePosition = useCallback((clientX: number) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
@@ -32,15 +32,20 @@ export function TransformationSection({
     setSliderPos(percentage);
   }, []);
 
+  // Pointer events (desktop mouse + touch em celulares)
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     setIsDragging(true);
-    e.currentTarget.setPointerCapture(e.pointerId);
-    handleMove(e.clientX);
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      // Ignora caso não suporte
+    }
+    updatePosition(e.clientX);
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDragging) return;
-    handleMove(e.clientX);
+    updatePosition(e.clientX);
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -54,6 +59,7 @@ export function TransformationSection({
     }
   };
 
+  // Suporte a teclado para acessibilidade
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") {
       setSliderPos((prev) => Math.max(0, prev - 5));
@@ -65,35 +71,24 @@ export function TransformationSection({
   return (
     <section
       id={id}
-      className={`py-24 sm:py-32 bg-white relative overflow-hidden ${className}`}
+      className={`py-24 sm:py-32 bg-white relative overflow-hidden border-t border-zinc-100 ${className}`}
       aria-label="Antes e depois da presença digital"
     >
-      {/* Elemento de fundo geométrico discreto */}
-      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <svg
-          className="absolute -top-12 right-0 w-[500px] h-[500px] text-zinc-100/70"
-          viewBox="0 0 400 400"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <circle cx="200" cy="200" r="160" stroke="currentColor" strokeWidth="1" strokeDasharray="4 6" />
-          <path d="M50 200 C 120 120, 280 280, 350 200" stroke="currentColor" strokeWidth="1" />
-        </svg>
-      </div>
-
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Cabeçalho da Seção */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-4">
+        {/* Cabeçalho enxuto: comparação entendida visualmente sem textos longos */}
+        <div className="max-w-3xl mb-10 sm:mb-14">
+          <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-3 block">
+            TRANSFORMAÇÃO VISUAL
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-3">
             Antes e depois.
           </h2>
-          <p className="text-base sm:text-xl text-zinc-600 font-normal leading-relaxed">
+          <p className="text-base sm:text-lg text-zinc-600 font-normal leading-relaxed">
             Uma presença digital bem construída muda a percepção sobre uma empresa.
           </p>
         </div>
 
-        {/* Comparador Visual Grande com Slider */}
+        {/* Comparador Visual com Slider central por toque no mobile e mouse no desktop */}
         <div className="relative">
           <div
             ref={containerRef}
@@ -108,25 +103,25 @@ export function TransformationSection({
             aria-valuemin={0}
             aria-valuemax={100}
             onKeyDown={handleKeyDown}
-            className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[620px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-zinc-200/80 cursor-ew-resize select-none bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+            className="relative w-full aspect-[4/3] sm:aspect-[16/9] max-h-[620px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-zinc-200/80 cursor-ew-resize select-none bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] touch-none"
           >
-            {/* Camada DEPOIS (Fundo Total) */}
+            {/* Camada DEPOIS (imagem grande) */}
             <img
               src={afterImage}
               alt="Visualização Depois - presença digital moderna"
-              className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+              className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
               loading="lazy"
             />
 
-            {/* Camada ANTES (Cortada pelo Slider) */}
+            {/* Camada ANTES (imagem grande cortada pelo slider) */}
             <div
-              className="absolute inset-0 overflow-hidden pointer-events-none"
+              className="absolute inset-0 overflow-hidden pointer-events-none select-none"
               style={{ width: `${sliderPos}%` }}
             >
               <img
                 src={beforeImage}
                 alt="Visualização Antes - presença digital desatualizada"
-                className="absolute inset-0 w-full h-full object-cover object-center max-w-none pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover object-center max-w-none pointer-events-none select-none"
                 style={{
                   width: containerRef.current
                     ? `${containerRef.current.clientWidth}px`
@@ -137,18 +132,17 @@ export function TransformationSection({
               />
             </div>
 
-            {/* Linha Divisória do Slider */}
+            {/* Divisor / Slider central */}
             <div
-              className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)] pointer-events-none"
+              className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_12px_rgba(0,0,0,0.4)] pointer-events-none"
               style={{ left: `${sliderPos}%` }}
             >
-              {/* Botão de Controle Central */}
-              <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white text-zinc-900 shadow-xl border border-zinc-200 flex items-center justify-center transition-transform hover:scale-110">
+              <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white text-zinc-900 shadow-xl border border-zinc-200 flex items-center justify-center transition-transform hover:scale-110 active:scale-95">
                 <ArrowLeftRight className="w-4 h-4 text-zinc-800" />
               </div>
             </div>
 
-            {/* Rótulos Discretos ANTES | DEPOIS */}
+            {/* Rótulos discretos ANTES e DEPOIS */}
             <div className="absolute top-4 left-4 pointer-events-none z-10">
               <span className="inline-block px-3.5 py-1.5 rounded-full bg-zinc-950/80 backdrop-blur-sm text-white text-xs font-semibold tracking-wider uppercase">
                 ANTES
@@ -160,8 +154,8 @@ export function TransformationSection({
               </span>
             </div>
 
-            {/* Instrução sutil na base */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none bg-zinc-950/60 backdrop-blur-sm text-white/90 px-3.5 py-1 rounded-full text-xs font-medium">
+            {/* Dica discreta de interação */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none bg-zinc-950/70 backdrop-blur-sm text-white/90 px-3.5 py-1 rounded-full text-xs font-medium">
               Arraste para comparar
             </div>
           </div>
