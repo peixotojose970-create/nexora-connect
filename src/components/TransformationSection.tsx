@@ -71,16 +71,16 @@ export function TransformationSection({
   return (
     <section
       id={id}
-      className={`py-24 sm:py-32 bg-white relative overflow-hidden border-t border-zinc-100 ${className}`}
+      className={`py-16 sm:py-24 lg:py-32 bg-white relative overflow-hidden border-t border-zinc-100 ${className}`}
       aria-label="Antes e depois da presença digital"
     >
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* Cabeçalho enxuto: comparação entendida visualmente sem textos longos */}
         <div className="max-w-3xl mb-10 sm:mb-14">
           <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-3 block">
             TRANSFORMAÇÃO VISUAL
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-3">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-3">
             Antes e depois.
           </h2>
           <p className="text-base sm:text-lg text-zinc-600 font-normal leading-relaxed">
@@ -103,7 +103,7 @@ export function TransformationSection({
             aria-valuemin={0}
             aria-valuemax={100}
             onKeyDown={handleKeyDown}
-            className="relative w-full aspect-[4/3] sm:aspect-[16/9] max-h-[620px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-zinc-200/80 cursor-ew-resize select-none bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] touch-none"
+            className="relative w-full aspect-[4/3] sm:aspect-[16/9] max-h-[580px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-zinc-200/80 cursor-ew-resize select-none bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] touch-none"
           >
             {/* Camada DEPOIS (imagem grande) */}
             <img
@@ -137,25 +137,25 @@ export function TransformationSection({
               className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_12px_rgba(0,0,0,0.4)] pointer-events-none"
               style={{ left: `${sliderPos}%` }}
             >
-              <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white text-zinc-900 shadow-xl border border-zinc-200 flex items-center justify-center transition-transform hover:scale-110 active:scale-95">
+              <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-zinc-900 shadow-xl border border-zinc-200 flex items-center justify-center transition-transform hover:scale-105 active:scale-95 touch-none">
                 <ArrowLeftRight className="w-4 h-4 text-zinc-800" />
               </div>
             </div>
 
             {/* Rótulos discretos ANTES e DEPOIS */}
-            <div className="absolute top-4 left-4 pointer-events-none z-10">
-              <span className="inline-block px-3.5 py-1.5 rounded-full bg-zinc-950/80 backdrop-blur-sm text-white text-xs font-semibold tracking-wider uppercase">
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 pointer-events-none z-10">
+              <span className="inline-block px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-zinc-950/85 backdrop-blur-xs text-white text-[10px] sm:text-xs font-semibold tracking-wider uppercase">
                 ANTES
               </span>
             </div>
-            <div className="absolute top-4 right-4 pointer-events-none z-10">
-              <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#2563EB]/90 backdrop-blur-sm text-white text-xs font-semibold tracking-wider uppercase">
+            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 pointer-events-none z-10">
+              <span className="inline-block px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#2563EB]/95 backdrop-blur-xs text-white text-[10px] sm:text-xs font-semibold tracking-wider uppercase">
                 DEPOIS
               </span>
             </div>
 
             {/* Dica discreta de interação */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none bg-zinc-950/70 backdrop-blur-sm text-white/90 px-3.5 py-1 rounded-full text-xs font-medium">
+            <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 pointer-events-none bg-zinc-950/75 backdrop-blur-xs text-white/90 px-3 sm:px-3.5 py-1 rounded-full text-[11px] sm:text-xs font-medium whitespace-nowrap">
               Arraste para comparar
             </div>
           </div>

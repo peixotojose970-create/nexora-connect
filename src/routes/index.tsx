@@ -64,6 +64,18 @@ function NexoraLandingPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Bloqueio de scroll de fundo ao abrir menu mobile
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   const closeMenu = () => setMobileMenuOpen(false);
 
   return (
@@ -96,18 +108,19 @@ function NexoraLandingPage() {
           ================================================== */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-zinc-100 py-4 shadow-[0_2px_15px_rgba(0,0,0,0.03)]"
-            : "bg-white border-b border-zinc-100/80 py-5"
+          scrolled || mobileMenuOpen
+            ? "bg-white/95 backdrop-blur-md border-b border-zinc-100 py-3.5 sm:py-4 shadow-[0_2px_15px_rgba(0,0,0,0.03)]"
+            : "bg-white border-b border-zinc-100/80 py-4 sm:py-5"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
           <a
             href="#inicio"
-            className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded"
+            onClick={closeMenu}
+            className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded py-1 min-h-[44px]"
             aria-label="NEXORA Início"
           >
-            <div className="w-8 h-8 rounded-lg bg-zinc-950 p-1.5 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-zinc-950 p-1.5 flex items-center justify-center shrink-0">
               <img
                 src="/nexora-logo.png"
                 alt="Símbolo NEXORA"
@@ -123,19 +136,19 @@ function NexoraLandingPage() {
           </a>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600">
-            <a href="#inicio" className="hover:text-zinc-950 transition-colors">
+            <a href="#inicio" className="hover:text-zinc-950 transition-colors py-2">
               Início
             </a>
-            <a href="#servicos" className="hover:text-zinc-950 transition-colors">
+            <a href="#servicos" className="hover:text-zinc-950 transition-colors py-2">
               Serviços
             </a>
-            <a href="#sobre" className="hover:text-zinc-950 transition-colors">
+            <a href="#sobre" className="hover:text-zinc-950 transition-colors py-2">
               Sobre
             </a>
-            <a href="#como-funciona" className="hover:text-zinc-950 transition-colors">
+            <a href="#como-funciona" className="hover:text-zinc-950 transition-colors py-2">
               Como funciona
             </a>
-            <a href="#feedbacks" className="hover:text-zinc-950 transition-colors">
+            <a href="#feedbacks" className="hover:text-zinc-950 transition-colors py-2">
               Feedbacks
             </a>
           </nav>
@@ -145,7 +158,7 @@ function NexoraLandingPage() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-zinc-950 text-white text-sm font-medium hover:bg-[#2563EB] transition-colors"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-zinc-950 text-white text-sm font-medium hover:bg-[#2563EB] transition-colors min-h-[44px]"
             >
               Falar com a NEXORA
             </a>
@@ -154,43 +167,73 @@ function NexoraLandingPage() {
           <div className="flex md:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded-lg"
-              aria-label="Menu de navegação"
+              className="p-2.5 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded-xl hover:bg-zinc-100 min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors"
+              aria-label={mobileMenuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
+        {/* Menu Mobile com animação suave e navegação completa */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-zinc-100 bg-white px-6 py-5 space-y-4">
-            <nav className="flex flex-col space-y-3 text-base font-medium text-zinc-800">
-              <a href="#inicio" onClick={closeMenu} className="py-1">
-                Início
+          <div
+            className="md:hidden fixed inset-x-0 top-[57px] sm:top-[65px] bottom-0 bg-white/98 backdrop-blur-md border-b border-zinc-200 z-40 overflow-y-auto px-5 py-6 flex flex-col justify-between animate-in fade-in slide-in-from-top-3 duration-200"
+            role="dialog"
+            aria-label="Menu de navegação mobile"
+          >
+            <nav className="flex flex-col divide-y divide-zinc-100 text-base sm:text-lg font-semibold text-zinc-900">
+              <a
+                href="#inicio"
+                onClick={closeMenu}
+                className="py-3.5 hover:text-[#2563EB] transition-colors flex items-center justify-between min-h-[48px]"
+              >
+                <span>Início</span>
               </a>
-              <a href="#servicos" onClick={closeMenu} className="py-1">
-                Serviços
+              <a
+                href="#servicos"
+                onClick={closeMenu}
+                className="py-3.5 hover:text-[#2563EB] transition-colors flex items-center justify-between min-h-[48px]"
+              >
+                <span>Serviços</span>
               </a>
-              <a href="#sobre" onClick={closeMenu} className="py-1">
-                Sobre
+              <a
+                href="#sobre"
+                onClick={closeMenu}
+                className="py-3.5 hover:text-[#2563EB] transition-colors flex items-center justify-between min-h-[48px]"
+              >
+                <span>Sobre</span>
               </a>
-              <a href="#como-funciona" onClick={closeMenu} className="py-1">
-                Como funciona
+              <a
+                href="#como-funciona"
+                onClick={closeMenu}
+                className="py-3.5 hover:text-[#2563EB] transition-colors flex items-center justify-between min-h-[48px]"
+              >
+                <span>Como funciona</span>
               </a>
-              <a href="#feedbacks" onClick={closeMenu} className="py-1">
-                Feedbacks
+              <a
+                href="#feedbacks"
+                onClick={closeMenu}
+                className="py-3.5 hover:text-[#2563EB] transition-colors flex items-center justify-between min-h-[48px]"
+              >
+                <span>Feedbacks</span>
               </a>
             </nav>
-            <div className="pt-2">
+
+            <div className="pt-6 mt-6 border-t border-zinc-100 space-y-3">
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}
-                className="w-full inline-flex items-center justify-center px-5 py-3 rounded-xl bg-zinc-950 text-white text-sm font-medium hover:bg-[#2563EB] transition-colors"
+                className="w-full inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-zinc-950 text-white text-base font-semibold hover:bg-[#2563EB] active:scale-[0.99] transition-all shadow-sm min-h-[48px]"
               >
                 Falar com a NEXORA
               </a>
+              <p className="text-center text-xs text-zinc-400 font-normal pt-1">
+                Atendimento rápido para empresas
+              </p>
             </div>
           </div>
         )}
@@ -201,27 +244,27 @@ function NexoraLandingPage() {
           ================================================== */}
       <section
         id="inicio"
-        className="relative pt-36 sm:pt-40 lg:pt-44 pb-16 sm:pb-24 lg:pb-28 overflow-hidden"
+        className="relative pt-28 sm:pt-36 lg:pt-44 pb-14 sm:pb-24 lg:pb-28 overflow-hidden"
       >
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-6 flex flex-col items-start">
-              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4 block">
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-3 sm:mb-4 block">
                 SOLUÇÕES DIGITAIS PARA EMPRESAS
               </span>
 
-              <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-extrabold text-zinc-950 tracking-tight leading-[1.12] mb-6">
+              <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-zinc-950 tracking-tight leading-[1.18] sm:leading-[1.12] mb-4 sm:mb-6 text-balance">
                 Seu negócio pode ser percebido de uma forma muito melhor.
               </h1>
 
-              <p className="text-base sm:text-lg text-zinc-600 font-normal leading-relaxed mb-8 sm:mb-10 max-w-xl">
+              <p className="text-base sm:text-lg text-zinc-600 font-normal leading-relaxed mb-6 sm:mb-10 max-w-xl">
                 Criamos sites, landing pages, cardápios digitais e conteúdos visuais para empresas.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
                 <a
                   href="#servicos"
-                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-zinc-200 text-zinc-950 text-sm font-semibold hover:border-zinc-400 hover:bg-zinc-50 transition-colors"
+                  className="inline-flex items-center justify-center px-6 sm:px-7 py-3.5 rounded-full border border-zinc-200 text-zinc-950 text-sm font-semibold hover:border-zinc-400 hover:bg-zinc-50 transition-colors min-h-[48px]"
                 >
                   Conhecer serviços
                 </a>
@@ -229,19 +272,19 @@ function NexoraLandingPage() {
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-zinc-950 text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors shadow-sm"
+                  className="inline-flex items-center justify-center px-6 sm:px-7 py-3.5 rounded-full bg-zinc-950 text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors shadow-sm min-h-[48px]"
                 >
                   Falar com a NEXORA
                 </a>
               </div>
             </div>
 
-            <div className="lg:col-span-6">
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-zinc-200/80 bg-zinc-100">
+            <div className="lg:col-span-6 w-full">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.06)] sm:shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-zinc-200/80 bg-zinc-100 aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-[500px]">
                 <img
                   src={heroImage}
                   alt="Apresentação visual de soluções digitais modernas da NEXORA"
-                  className="w-full h-[360px] sm:h-[460px] lg:h-[500px] object-cover object-center"
+                  className="w-full h-full object-cover object-center"
                   loading="eager"
                 />
               </div>
@@ -258,10 +301,10 @@ function NexoraLandingPage() {
       {/* ==================================================
           4. SOLUÇÕES / SERVIÇOS
           ================================================== */}
-      <section id="servicos" className="py-24 sm:py-32 bg-white border-t border-zinc-100">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section id="servicos" className="py-16 sm:py-24 lg:py-32 bg-white border-t border-zinc-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="max-w-2xl mb-14 sm:mb-20">
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-4">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-3 sm:mb-4">
               Soluções digitais para empresas.
             </h2>
             <p className="text-base sm:text-xl text-zinc-600 font-normal leading-relaxed">
@@ -281,7 +324,7 @@ function NexoraLandingPage() {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-8 sm:p-10 flex-1 flex flex-col justify-between">
+                <div className="p-6 sm:p-10 flex-1 flex flex-col justify-between">
                   <div>
                     <span className="text-xs font-mono font-semibold text-[#2563EB] tracking-wider uppercase block mb-2">
                       01 &bull; Presença Corporativa
@@ -305,7 +348,7 @@ function NexoraLandingPage() {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-8 sm:p-10 flex-1 flex flex-col justify-between">
+                <div className="p-6 sm:p-10 flex-1 flex flex-col justify-between">
                   <div>
                     <span className="text-xs font-mono font-semibold text-[#2563EB] tracking-wider uppercase block mb-2">
                       02 &bull; Conversão e Vendas
@@ -332,7 +375,7 @@ function NexoraLandingPage() {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-6 sm:p-8 flex-1 flex flex-col">
+                <div className="p-5 sm:p-8 flex-1 flex flex-col">
                   <span className="text-xs font-mono font-semibold text-[#2563EB] tracking-wider uppercase block mb-2">
                     03 &bull; Praticidade
                   </span>
@@ -354,7 +397,7 @@ function NexoraLandingPage() {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-6 sm:p-8 flex-1 flex flex-col">
+                <div className="p-5 sm:p-8 flex-1 flex flex-col">
                   <span className="text-xs font-mono font-semibold text-[#2563EB] tracking-wider uppercase block mb-2">
                     04 &bull; Direção de Arte
                   </span>
@@ -376,7 +419,7 @@ function NexoraLandingPage() {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-6 sm:p-8 flex-1 flex flex-col">
+                <div className="p-5 sm:p-8 flex-1 flex flex-col">
                   <span className="text-xs font-mono font-semibold text-[#2563EB] tracking-wider uppercase block mb-2">
                     05 &bull; Divulgação Comercial
                   </span>
@@ -399,11 +442,11 @@ function NexoraLandingPage() {
       {/* ==================================================
           5. SOBRE A NEXORA
           ================================================== */}
-      <section id="sobre" className="py-24 sm:py-32 bg-white border-t border-zinc-100">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section id="sobre" className="py-16 sm:py-24 lg:py-32 bg-white border-t border-zinc-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-6">
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-6">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-4 sm:mb-6">
                 Sobre a NEXORA
               </h2>
               <p className="text-base sm:text-xl text-zinc-600 font-normal leading-relaxed">
@@ -417,7 +460,7 @@ function NexoraLandingPage() {
                 <img
                   src={aboutImage}
                   alt="Equipe e ambiente de trabalho da NEXORA"
-                  className="w-full h-[360px] sm:h-[460px] object-cover object-center"
+                  className="w-full h-[260px] sm:h-[400px] lg:h-[460px] object-cover object-center"
                   loading="lazy"
                 />
               </div>
@@ -438,67 +481,82 @@ function NexoraLandingPage() {
       {/* ==================================================
           7. COMO FUNCIONA
           ================================================== */}
-      <section id="como-funciona" className="py-24 sm:py-32 bg-white border-t border-zinc-100">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-2xl mb-14 sm:mb-20">
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight">
+      <section id="como-funciona" className="py-16 sm:py-24 lg:py-32 bg-white border-t border-zinc-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="max-w-2xl mb-10 sm:mb-16">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight">
               Como funciona.
             </h2>
           </div>
 
           <div className="relative">
+            {/* Linha discreta horizontal no Desktop */}
             <div
               className="hidden lg:block absolute top-7 left-[8%] right-[8%] h-px bg-zinc-200 -z-0"
               aria-hidden="true"
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 relative z-10">
-              <div className="flex flex-col items-start">
-                <div className="w-14 h-14 rounded-2xl bg-white border border-zinc-200 shadow-sm flex items-center justify-center font-mono text-base font-bold text-zinc-950 mb-6">
+            {/* Linha discreta vertical no Mobile conectando 01 -> 02 -> 03 -> 04 */}
+            <div
+              className="block lg:hidden absolute top-6 bottom-6 left-6 w-px bg-zinc-200 -z-0"
+              aria-hidden="true"
+            />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 sm:gap-10 relative z-10">
+              <div className="flex flex-row lg:flex-col items-start gap-4 lg:gap-0">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border border-zinc-200 shadow-xs flex items-center justify-center font-mono text-sm sm:text-base font-bold text-zinc-950 lg:mb-6 shrink-0 z-10">
                   01
                 </div>
-                <h3 className="text-lg font-bold text-zinc-950 tracking-tight mb-2">
-                  Conversa
-                </h3>
-                <p className="text-sm text-zinc-600 leading-relaxed">
-                  Você nos explica o que precisa.
-                </p>
+                <div className="pt-1 lg:pt-0">
+                  <h3 className="text-base sm:text-lg font-bold text-zinc-950 tracking-tight mb-1 sm:mb-2">
+                    Conversa
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    Você nos explica o que precisa.
+                  </p>
+                </div>
               </div>
 
-              <div className="flex flex-col items-start">
-                <div className="w-14 h-14 rounded-2xl bg-white border border-zinc-200 shadow-sm flex items-center justify-center font-mono text-base font-bold text-zinc-950 mb-6">
+              <div className="flex flex-row lg:flex-col items-start gap-4 lg:gap-0">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border border-zinc-200 shadow-xs flex items-center justify-center font-mono text-sm sm:text-base font-bold text-zinc-950 lg:mb-6 shrink-0 z-10">
                   02
                 </div>
-                <h3 className="text-lg font-bold text-zinc-950 tracking-tight mb-2">
-                  Estratégia
-                </h3>
-                <p className="text-sm text-zinc-600 leading-relaxed">
-                  Entendemos o objetivo e definimos a melhor solução.
-                </p>
+                <div className="pt-1 lg:pt-0">
+                  <h3 className="text-base sm:text-lg font-bold text-zinc-950 tracking-tight mb-1 sm:mb-2">
+                    Estratégia
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    Entendemos o objetivo e definimos a melhor solução.
+                  </p>
+                </div>
               </div>
 
-              <div className="flex flex-col items-start">
-                <div className="w-14 h-14 rounded-2xl bg-white border border-zinc-200 shadow-sm flex items-center justify-center font-mono text-base font-bold text-zinc-950 mb-6">
+              <div className="flex flex-row lg:flex-col items-start gap-4 lg:gap-0">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border border-zinc-200 shadow-xs flex items-center justify-center font-mono text-sm sm:text-base font-bold text-zinc-950 lg:mb-6 shrink-0 z-10">
                   03
                 </div>
-                <h3 className="text-lg font-bold text-zinc-950 tracking-tight mb-2">
-                  Criação
-                </h3>
-                <p className="text-sm text-zinc-600 leading-relaxed">
-                  Desenvolvemos o projeto e ajustamos todos os detalhes.
-                </p>
+                <div className="pt-1 lg:pt-0">
+                  <h3 className="text-base sm:text-lg font-bold text-zinc-950 tracking-tight mb-1 sm:mb-2">
+                    Criação
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    Desenvolvemos o projeto e ajustamos todos os detalhes.
+                  </p>
+                </div>
               </div>
 
-              <div className="flex flex-col items-start">
-                <div className="w-14 h-14 rounded-2xl bg-zinc-950 text-white shadow-sm flex items-center justify-center font-mono text-base font-bold mb-6">
+              <div className="flex flex-row lg:flex-col items-start gap-4 lg:gap-0">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-zinc-950 text-white shadow-xs flex items-center justify-center font-mono text-sm sm:text-base font-bold lg:mb-6 shrink-0 z-10">
                   04
                 </div>
-                <h3 className="text-lg font-bold text-zinc-950 tracking-tight mb-2">
-                  Entrega
-                </h3>
-                <p className="text-sm text-zinc-600 leading-relaxed">
-                  Você recebe uma solução pronta para utilizar.
-                </p>
+                <div className="pt-1 lg:pt-0">
+                  <h3 className="text-base sm:text-lg font-bold text-zinc-950 tracking-tight mb-1 sm:mb-2">
+                    Entrega
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    Você recebe uma solução pronta para utilizar.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
