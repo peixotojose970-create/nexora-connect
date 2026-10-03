@@ -1,5 +1,6 @@
 import { TransformationSection } from "@/components/TransformationSection";
 import { ContactSection } from "@/components/ContactSection";
+import { SiteFooter } from "@/components/SiteFooter";
 import { FinalCtaSection } from "@/components/FinalCtaSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { createFileRoute } from "@tanstack/react-router";
@@ -899,63 +900,7 @@ function NexoraLandingPage() {
           ================================================== */}
       <ContactSection id="contato" />
 
-      {/* ==================================================
-          FOOTER
-          ================================================== */}
-      <footer className="border-t border-zinc-100 bg-white py-12">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo e Descrição */}
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-zinc-950 p-1 flex items-center justify-center">
-              <img
-                src="/nexora-logo.png"
-                alt="NEXORA"
-                className="w-full h-full object-contain"
-                width={32}
-                height={32}
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-base tracking-tight text-zinc-950">
-                NEXORA
-              </span>
-              <span className="text-[10px] text-zinc-400 font-medium">
-                Soluções Digitais para Empresas
-              </span>
-            </div>
-          </div>
-
-          {/* Links Rápidos */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-500">
-            <a href="#inicio" className="hover:text-zinc-900 transition-colors">
-              Início
-            </a>
-            <a href="#servicos" className="hover:text-zinc-900 transition-colors">
-              Serviços
-            </a>
-            <a href="#como-funciona" className="hover:text-zinc-900 transition-colors">
-              Como funciona
-            </a>
-            <a href="#sobre-nos" className="hover:text-zinc-900 transition-colors">
-              Sobre nós
-            </a>
-            <a href="#transformacao" className="hover:text-zinc-900 transition-colors">
-              Antes e Depois
-            </a>
-            <a href="#avaliacoes" className="hover:text-zinc-900 transition-colors">
-              Avaliações
-            </a>
-            <a href="#contato" className="hover:text-zinc-900 transition-colors">
-              Contato
-            </a>
-          </div>
-
-          {/* Copyright */}
-          <div className="text-xs text-zinc-400 text-center md:text-right">
-            &copy; {new Date().getFullYear()} NEXORA. Todos os direitos reservados.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter whatsappLink={WHATSAPP_LINK} />
     </div>
   );
 }

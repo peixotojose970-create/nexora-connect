@@ -142,3 +142,26 @@
     color: var(--color-foreground);
   }
 }
+
+/* Motion & Performance Optimization */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hardware accelerated smooth image reveals */
+img {
+  content-visibility: auto;
+}
+
+@layer utilities {
+  .touch-pan-y {
+    touch-action: pan-y;
+  }
+}
