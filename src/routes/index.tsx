@@ -589,59 +589,199 @@ function NexoraLandingPage() {
       {/* ==================================================
           COMO FUNCIONA
           ================================================== */}
-      <section id="como-funciona" className="py-24 bg-zinc-50/70 border-y border-zinc-100">
+      <section id="como-funciona" className="py-28 sm:py-36 bg-white border-t border-zinc-100">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-2xl mb-16">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-3">
+          {/* Header da Seção */}
+          <div className="max-w-3xl mb-20 sm:mb-24">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold uppercase tracking-wider mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-              Metodologia Clara
+              Como Funciona
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-4">
-              Como desenvolvemos cada etapa do seu projeto.
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tight leading-[1.1] mb-6">
+              Do problema à solução.
             </h2>
-            <p className="text-base text-zinc-600 font-normal">
-              Processo enxuto, transparente e sem burocracia, focado em agilidade e precisão.
+            <p className="text-lg sm:text-xl text-zinc-600 font-normal leading-relaxed">
+              Entendemos o que sua empresa precisa, definimos a melhor direção e transformamos a ideia em uma solução digital.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              {
-                step: "01",
-                title: "Diagnóstico",
-                desc: "Entendemos seu público, o posicionamento atual e os gargalos de percepção.",
-              },
-              {
-                step: "02",
-                title: "Conceito & Design",
-                desc: "Criamos a direção visual, tipografia e protótipo exclusivo para a sua marca.",
-              },
-              {
-                step: "03",
-                title: "Construção & Testes",
-                desc: "Implementamos com tecnologia limpa, carregamento ultra rápido e foco em mobile.",
-              },
-              {
-                step: "04",
-                title: "Publicação & Lançamento",
-                desc: "Colocamos o projeto no ar integrado ao WhatsApp e canais de contato.",
-              },
-            ].map((item) => (
-              <div
-                key={item.step}
-                className="bg-white p-7 rounded-2xl border border-zinc-200/80 hover:border-zinc-300 transition-colors"
-              >
-                <div className="text-2xl font-black text-[#2563EB] mb-4 font-mono">
-                  {item.step}
+          {/* Quatro Etapas conectadas por linha visual elegante */}
+          {/* Versão Desktop: layout horizontal com linha contínua e nós diferenciados */}
+          <div className="hidden lg:block relative">
+            {/* Linha visual elegante conectando as quatro etapas */}
+            <div
+              className="absolute top-[36px] left-[5%] right-[5%] h-[2px] bg-gradient-to-r from-zinc-200 via-blue-200 to-zinc-200 -z-0"
+              aria-hidden="true"
+            />
+
+            <div className="grid grid-cols-4 gap-8 relative z-10">
+              {/* Etapa 01 - CONVERSA */}
+              <div className="group flex flex-col pt-1">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-[72px] h-[72px] rounded-2xl bg-white border border-zinc-200 shadow-sm flex items-center justify-center font-mono text-2xl font-black text-zinc-950 group-hover:border-[#2563EB] group-hover:text-[#2563EB] transition-all duration-300">
+                    01
+                  </div>
+                  <div className="h-px flex-1 bg-zinc-100 group-hover:bg-blue-100 transition-colors" />
                 </div>
-                <h3 className="text-lg font-bold text-zinc-950 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed">
-                  {item.desc}
-                </p>
+                <div className="p-6 rounded-2xl bg-zinc-50/70 border border-zinc-100 hover:border-zinc-200 transition-all duration-300 min-h-[175px] flex flex-col justify-start">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#2563EB] font-bold mb-1.5">
+                    Etapa 01
+                  </span>
+                  <h3 className="text-lg font-extrabold tracking-tight text-zinc-950 mb-2">
+                    CONVERSA
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    &ldquo;Você nos explica o que precisa.&rdquo;
+                  </p>
+                </div>
               </div>
-            ))}
+
+              {/* Etapa 02 - ESTRATÉGIA */}
+              <div className="group flex flex-col pt-1">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-[72px] h-[72px] rounded-2xl bg-white border border-zinc-200 shadow-sm flex items-center justify-center font-mono text-2xl font-black text-zinc-950 group-hover:border-[#2563EB] group-hover:text-[#2563EB] transition-all duration-300">
+                    02
+                  </div>
+                  <div className="h-px flex-1 bg-zinc-100 group-hover:bg-blue-100 transition-colors" />
+                </div>
+                <div className="p-6 rounded-2xl bg-zinc-50/70 border border-zinc-100 hover:border-zinc-200 transition-all duration-300 min-h-[175px] flex flex-col justify-start">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#2563EB] font-bold mb-1.5">
+                    Etapa 02
+                  </span>
+                  <h3 className="text-lg font-extrabold tracking-tight text-zinc-950 mb-2">
+                    ESTRATÉGIA
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    &ldquo;Entendemos o objetivo e definimos a melhor solução.&rdquo;
+                  </p>
+                </div>
+              </div>
+
+              {/* Etapa 03 - CRIAÇÃO */}
+              <div className="group flex flex-col pt-1">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-[72px] h-[72px] rounded-2xl bg-white border border-zinc-200 shadow-sm flex items-center justify-center font-mono text-2xl font-black text-zinc-950 group-hover:border-[#2563EB] group-hover:text-[#2563EB] transition-all duration-300">
+                    03
+                  </div>
+                  <div className="h-px flex-1 bg-zinc-100 group-hover:bg-blue-100 transition-colors" />
+                </div>
+                <div className="p-6 rounded-2xl bg-zinc-50/70 border border-zinc-100 hover:border-zinc-200 transition-all duration-300 min-h-[175px] flex flex-col justify-start">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#2563EB] font-bold mb-1.5">
+                    Etapa 03
+                  </span>
+                  <h3 className="text-lg font-extrabold tracking-tight text-zinc-950 mb-2">
+                    CRIAÇÃO
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    &ldquo;Desenvolvemos o projeto e ajustamos todos os detalhes.&rdquo;
+                  </p>
+                </div>
+              </div>
+
+              {/* Etapa 04 - ENTREGA (Destaque final elegante) */}
+              <div className="group flex flex-col pt-1">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-[72px] h-[72px] rounded-2xl bg-[#2563EB] text-white shadow-md flex items-center justify-center font-mono text-2xl font-black transition-all duration-300 group-hover:scale-105">
+                    04
+                  </div>
+                  <div className="h-px flex-1 bg-transparent" />
+                </div>
+                <div className="p-6 rounded-2xl bg-blue-50/50 border border-blue-100 hover:border-blue-200 transition-all duration-300 min-h-[175px] flex flex-col justify-start">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#2563EB] font-bold mb-1.5">
+                    Etapa 04 &bull; Conclusão
+                  </span>
+                  <h3 className="text-lg font-extrabold tracking-tight text-zinc-950 mb-2">
+                    ENTREGA
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    &ldquo;Você recebe uma solução pronta para utilizar.&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Versão Mobile/Tablet: layout vertical com uma linha lateral discreta conectando as 4 etapas */}
+          <div className="lg:hidden relative pl-8 sm:pl-10">
+            {/* Linha vertical lateral discreta */}
+            <div
+              className="absolute left-4 sm:left-5 top-5 bottom-8 w-[2px] bg-gradient-to-b from-[#2563EB] via-zinc-200 to-zinc-300"
+              aria-hidden="true"
+            />
+
+            <div className="space-y-8 sm:space-y-10">
+              {/* Mobile 01 - CONVERSA */}
+              <div className="relative flex flex-col items-start">
+                <div className="absolute -left-[37px] sm:-left-[45px] top-0 w-8 h-8 rounded-full bg-white border-2 border-[#2563EB] flex items-center justify-center shadow-sm">
+                  <span className="text-xs font-mono font-bold text-zinc-950">01</span>
+                </div>
+                <div className="w-full bg-zinc-50/70 p-6 rounded-2xl border border-zinc-200/80">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#2563EB] font-bold block mb-1">
+                    Etapa 01
+                  </span>
+                  <h3 className="text-base font-extrabold tracking-tight text-zinc-950 mb-2">
+                    CONVERSA
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    &ldquo;Você nos explica o que precisa.&rdquo;
+                  </p>
+                </div>
+              </div>
+
+              {/* Mobile 02 - ESTRATÉGIA */}
+              <div className="relative flex flex-col items-start">
+                <div className="absolute -left-[37px] sm:-left-[45px] top-0 w-8 h-8 rounded-full bg-white border-2 border-zinc-400 flex items-center justify-center shadow-sm">
+                  <span className="text-xs font-mono font-bold text-zinc-950">02</span>
+                </div>
+                <div className="w-full bg-zinc-50/70 p-6 rounded-2xl border border-zinc-200/80">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#2563EB] font-bold block mb-1">
+                    Etapa 02
+                  </span>
+                  <h3 className="text-base font-extrabold tracking-tight text-zinc-950 mb-2">
+                    ESTRATÉGIA
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    &ldquo;Entendemos o objetivo e definimos a melhor solução.&rdquo;
+                  </p>
+                </div>
+              </div>
+
+              {/* Mobile 03 - CRIAÇÃO */}
+              <div className="relative flex flex-col items-start">
+                <div className="absolute -left-[37px] sm:-left-[45px] top-0 w-8 h-8 rounded-full bg-white border-2 border-zinc-400 flex items-center justify-center shadow-sm">
+                  <span className="text-xs font-mono font-bold text-zinc-950">03</span>
+                </div>
+                <div className="w-full bg-zinc-50/70 p-6 rounded-2xl border border-zinc-200/80">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#2563EB] font-bold block mb-1">
+                    Etapa 03
+                  </span>
+                  <h3 className="text-base font-extrabold tracking-tight text-zinc-950 mb-2">
+                    CRIAÇÃO
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    &ldquo;Desenvolvemos o projeto e ajustamos todos os detalhes.&rdquo;
+                  </p>
+                </div>
+              </div>
+
+              {/* Mobile 04 - ENTREGA */}
+              <div className="relative flex flex-col items-start">
+                <div className="absolute -left-[37px] sm:-left-[45px] top-0 w-8 h-8 rounded-full bg-[#2563EB] border-2 border-[#2563EB] text-white flex items-center justify-center shadow-sm">
+                  <span className="text-xs font-mono font-bold text-white">04</span>
+                </div>
+                <div className="w-full bg-blue-50/50 p-6 rounded-2xl border border-blue-100">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#2563EB] font-bold block mb-1">
+                    Etapa 04 &bull; Conclusão
+                  </span>
+                  <h3 className="text-base font-extrabold tracking-tight text-zinc-950 mb-2">
+                    ENTREGA
+                  </h3>
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    &ldquo;Você recebe uma solução pronta para utilizar.&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -649,60 +789,70 @@ function NexoraLandingPage() {
       {/* ==================================================
           SOBRE A NEXORA
           ================================================== */}
-      <section id="sobre-nos" className="py-24 bg-white">
+      <section id="sobre-nos" className="py-28 sm:py-36 bg-white border-t border-zinc-100">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Imagem Editorial Institucional */}
-            <div className="lg:col-span-6 relative">
-              <div className="relative rounded-2xl overflow-hidden border border-zinc-200 shadow-md">
-                <img
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80"
-                  alt="Espaço e rigor de trabalho da NEXORA"
-                  className="w-full h-[420px] object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent flex items-end p-8">
-                  <div className="text-white">
-                    <div className="text-xs font-mono uppercase tracking-widest text-blue-300 mb-1">
-                      Identidade & Rigor
-                    </div>
-                    <div className="text-lg font-bold">
-                      Design que transmite solidez desde o primeiro segundo.
-                    </div>
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Coluna Institucional / Conteúdo */}
+            <div className="lg:col-span-6 flex flex-col items-start">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold uppercase tracking-wider mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+                Sobre a NEXORA
+              </div>
+
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tight leading-[1.12] mb-8">
+                Digital, mas feito para pessoas.
+              </h2>
+
+              <div className="space-y-6 text-base sm:text-lg text-zinc-600 font-normal leading-relaxed mb-10 max-w-xl">
+                <p>
+                  A NEXORA nasceu para ajudar empresas a se apresentarem melhor no mundo digital.
+                </p>
+                <p>
+                  Unimos tecnologia, inteligência artificial, estratégia e criatividade para transformar necessidades reais em soluções simples, profissionais e funcionais.
+                </p>
+                <p className="text-zinc-800 font-medium">
+                  Nosso foco é entender o negócio antes de criar a solução.
+                </p>
+              </div>
+
+              {/* Frase de Destaque Forte */}
+              <div className="w-full max-w-xl p-8 rounded-2xl bg-zinc-50 border-l-4 border-l-[#2563EB] border-y border-r border-zinc-200/80 shadow-sm">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#2563EB] font-bold block mb-2">
+                  Diretriz Central
+                </span>
+                <blockquote className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight leading-snug whitespace-pre-line">
+                  &ldquo;Entender primeiro.&#10;Criar melhor.&rdquo;
+                </blockquote>
               </div>
             </div>
 
-            {/* Texto Sobre Nós */}
+            {/* Coluna Grande Imagem Institucional ao Lado */}
             <div className="lg:col-span-6">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-                Sobre Nós
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-6">
-                Construímos soluções digitais para marcas que valorizam credibilidade.
-              </h2>
-              <p className="text-base text-zinc-600 leading-relaxed mb-6">
-                A <strong>NEXORA</strong> nasceu com uma premissa clara: livrar pequenas e médias empresas
-                da aparência de templates genéricos e de promessas futuristas artificiais.
-              </p>
-              <p className="text-base text-zinc-600 leading-relaxed mb-8">
-                Acreditamos no poder do espaço em branco, da boa fotografia corporativa e de uma
-                comunicação direta. É isso que transforma visitantes casuais em clientes qualificados.
-              </p>
+              <div className="relative">
+                {/* Elemento de fundo geométrico sutil */}
+                <div className="absolute -inset-4 bg-gradient-to-tr from-blue-50 to-zinc-100 rounded-3xl -rotate-1 transform -z-10" />
 
-              <div className="grid grid-cols-2 gap-6 pt-6 border-t border-zinc-100">
-                <div>
-                  <div className="text-3xl font-extrabold text-zinc-950">100%</div>
-                  <div className="text-xs text-zinc-500 mt-1">
-                    Projetos responsivos para smartphone, tablet e desktop
-                  </div>
-                </div>
-                <div>
-                  <div className="text-3xl font-extrabold text-[#2563EB]">Direto</div>
-                  <div className="text-xs text-zinc-500 mt-1">
-                    Geração de leads via WhatsApp e canais instantâneos
+                {/* Card com a grande imagem corporativa */}
+                <div className="relative rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-200/80 shadow-[0_25px_60px_rgba(0,0,0,0.08)]">
+                  <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=85"
+                    alt="Ambiente de trabalho digital, design de interfaces e criação tecnológica da NEXORA"
+                    className="w-full h-[480px] sm:h-[580px] object-cover object-center"
+                    loading="lazy"
+                  />
+
+                  {/* Overlay gradiente premium com detalhe editorial */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/85 via-zinc-950/20 to-transparent flex flex-col justify-end p-8 sm:p-10 text-white">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium w-fit mb-3 text-blue-200">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      Design &amp; Tecnologia
+                    </div>
+                    <p className="text-xl sm:text-2xl font-bold tracking-tight text-white max-w-md leading-snug">
+                      Soluções digitais desenhadas com precisão para elevar seu negócio.
+                    </p>
+                    <p className="text-xs text-zinc-300 mt-2 font-mono">
+                      Ambiente corporativo de criação digital
+                    </p>
                   </div>
                 </div>
               </div>
