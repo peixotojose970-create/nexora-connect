@@ -46,11 +46,14 @@ export function SiteFooter() {
             Como funciona
           </a>
           <span className="hidden sm:inline-block text-zinc-300">|</span>
+          <Link to="/termos" className="hover:text-zinc-950 transition-colors">
+            Termos de Uso
+          </Link>
           <Link to="/privacidade" className="hover:text-zinc-950 transition-colors">
             Política de Privacidade
           </Link>
-          <Link to="/termos" className="hover:text-zinc-950 transition-colors">
-            Termos de Uso
+          <Link to="/cookies" className="hover:text-zinc-950 transition-colors">
+            Política de Cookies
           </Link>
         </div>
       </div>

@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CookieConsentBanner } from "../components/CookieConsentBanner";
 
 function NotFoundComponent() {
   return (
@@ -78,14 +79,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "NEXORA | Soluções Digitais Corporativas" },
+      {
+        name: "description",
+        content:
+          "Desenvolvimento de websites institucionais, landing pages e soluções digitais de alto impacto para empresas.",
+      },
+      { name: "author", content: "NEXORA" },
+      { property: "og:title", content: "NEXORA | Soluções Digitais Corporativas" },
+      {
+        property: "og:description",
+        content:
+          "Desenvolvimento de websites institucionais, landing pages e soluções digitais de alto impacto para empresas.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -120,8 +128,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <CookieConsentBanner />
     </QueryClientProvider>
   );
 }
