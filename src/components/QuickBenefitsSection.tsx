@@ -30,11 +30,11 @@ export function QuickBenefitsSection({
   return (
     <section
       id={id}
-      className={`py-12 sm:py-16 bg-white border-t border-zinc-100 ${className}`}
+      className={`py-12 sm:py-16 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-800/80 transition-colors duration-300 ${className}`}
       aria-label="Benefícios objetivos"
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 divide-y md:divide-y-0 md:divide-x divide-zinc-100">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 divide-y md:divide-y-0 md:divide-x divide-zinc-100 dark:divide-zinc-800/80">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
@@ -44,14 +44,14 @@ export function QuickBenefitsSection({
                   index !== 0 ? "pt-6 md:pt-0 md:pl-8" : ""
                 }`}
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100/80 flex items-center justify-center shrink-0 text-[#2563EB]">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100/80 dark:border-blue-800/40 flex items-center justify-center shrink-0 text-[#2563EB]">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-zinc-950 tracking-tight mb-1">
+                  <h3 className="text-base font-bold text-zinc-950 dark:text-white tracking-tight mb-1">
                     {benefit.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>

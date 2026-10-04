@@ -14,9 +14,9 @@ export function FinalCtaSection({
   whatsappLink = DEFAULT_WHATSAPP,
 }: FinalCtaSectionProps) {
   return (
-    <section id={id} className="py-28 sm:py-36 bg-white relative overflow-hidden">
+    <section id={id} className="py-24 sm:py-32 bg-white dark:bg-zinc-950 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="relative rounded-3xl bg-zinc-950 p-8 sm:p-14 lg:p-20 text-white overflow-hidden shadow-2xl border border-zinc-800/80">
+        <div className="relative rounded-3xl bg-zinc-950 dark:bg-zinc-900 p-8 sm:p-14 lg:p-20 text-white overflow-hidden shadow-2xl border border-zinc-800/80">
           {/* Composição visual elegante de apoio em camadas de profundidade */}
           <div
             className="absolute -top-32 -right-32 w-[600px] h-[600px] bg-gradient-to-br from-[#2563EB]/25 via-indigo-600/15 to-transparent rounded-full blur-3xl pointer-events-none"
@@ -67,7 +67,7 @@ export function FinalCtaSection({
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#2563EB] hover:bg-blue-500 text-white font-semibold text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.98] group"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#2563EB] hover:bg-blue-500 text-white font-semibold text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.98] group min-h-[48px]"
                 >
                   <MessageCircle className="w-5 h-5 text-emerald-300" />
                   <span>Falar com a NEXORA</span>
