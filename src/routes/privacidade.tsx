@@ -5,11 +5,11 @@ import { LEGAL_CONFIG } from "@/config/legal";
 export const Route = createFileRoute("/privacidade")({
   head: () => ({
     meta: [
-      { title: "Política de Privacidade | NEXORA" },
+      { title: "Política de Privacidade | VELTRION" },
       {
         name: "description",
         content:
-          "Política de Privacidade da NEXORA. Diretrizes de governança, segurança da informação e tratamento de dados pessoais segundo a LGPD.",
+          "Política de Privacidade da VELTRION. Diretrizes de governança, segurança da informação e tratamento de dados pessoais segundo a LGPD.",
       },
     ],
   }),

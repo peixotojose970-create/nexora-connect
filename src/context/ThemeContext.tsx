@@ -8,7 +8,7 @@ interface ThemeContextType {
   toggleTheme: () => void;
 }
 
-const THEME_STORAGE_KEY = "nexora_theme_preference";
+const THEME_STORAGE_KEY = "veltrion_theme_preference";
 
 const defaultThemeContext: ThemeContextType = {
   theme: "light",

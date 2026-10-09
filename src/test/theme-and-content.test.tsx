@@ -41,13 +41,13 @@ describe("Theme and Content Refinements", () => {
     fireEvent.click(darkButton);
 
     expect(themeDisplay.textContent).toBe("dark");
-    expect(localStorage.getItem("nexora_theme_preference")).toBe("dark");
+    expect(localStorage.getItem("veltrion_theme_preference")).toBe("dark");
 
     const lightButton = screen.getByRole("button", { name: /light/i });
     fireEvent.click(lightButton);
 
     expect(themeDisplay.textContent).toBe("light");
-    expect(localStorage.getItem("nexora_theme_preference")).toBe("light");
+    expect(localStorage.getItem("veltrion_theme_preference")).toBe("light");
   });
 
   it("renders Sobre a NEXORA with exact required texts and pillars", () => {

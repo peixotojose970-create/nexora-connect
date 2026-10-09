@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Cookie, Settings, Check, X } from "lucide-react";
 import { LEGAL_CONFIG } from "@/config/legal";
 
-const CONSENT_STORAGE_KEY = "nexora_cookie_consent_v1";
+const CONSENT_STORAGE_KEY = "veltrion_cookie_consent_v1";
 
 interface ConsentPreferences {
   necessary: boolean;
@@ -71,7 +71,7 @@ export function CookieConsentBanner() {
     <div
       role="region"
       aria-label="Consentimento de Cookies"
-      className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6 bg-white/95 backdrop-blur-md border-t border-zinc-200 shadow-2xl animate-in fade-in slide-in-from-bottom duration-300"
+      className="fixed bottom-0 left-0 right-0 z-50 border-t border-zinc-200 bg-white/95 p-4 shadow-2xl backdrop-blur-md animate-in fade-in slide-in-from-bottom duration-300 dark:border-white/10 dark:bg-[#121817]/95 sm:p-6"
     >
       <div className="max-w-4xl mx-auto space-y-4">
         {!showPreferences ? (

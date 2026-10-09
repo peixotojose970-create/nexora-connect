@@ -40,20 +40,20 @@ export interface LegalConfig {
 
 export const LEGAL_CONFIG: LegalConfig = {
   company: {
-    brandName: "NEXORA",
+    brandName: "VELTRION",
     corporateName: undefined,
     cnpj: undefined,
     address: undefined,
-    commercialEmail: "contato@nexora.digital",
+    commercialEmail: "contato@veltrion.digital",
     commercialPhone: undefined,
-    websiteUrl: "https://nexora.digital",
+    websiteUrl: "https://veltrion.digital",
   },
   privacy: {
     lastUpdated: "Outubro de 2026",
     hasDesignatedDpo: false,
     dpoName: undefined,
     dpoEmail: undefined,
-    privacyContactEmail: "privacidade@nexora.digital",
+    privacyContactEmail: "privacidade@veltrion.digital",
     privacyContactName: undefined,
     retentionPolicyDescription:
       "Os dados pessoais coletados via formulários de contato são mantidos exclusivamente pelo período estritamente necessário para atender às solicitações do titular, prestar esclarecimentos, formalizar orçamentos e cumprir obrigações legais ou regulatórias aplicáveis.",
@@ -70,11 +70,11 @@ export const LEGAL_CONFIG: LegalConfig = {
     hasNonEssentialCookies: false,
     cookieCatalog: [
       {
-        name: "sidebar_state (quando aplicável ao painel)",
+        name: "veltrion_theme_preference",
         category: "necessario",
-        purpose: "Armazenar a preferência de visualização recolhida ou expandida da barra lateral durante a navegação.",
-        provider: "NEXORA (Próprio)",
-        duration: "Sessão / 7 dias",
+        purpose: "Armazenar a preferência de aparência clara ou escura escolhida durante a navegação.",
+        provider: "VELTRION (Próprio)",
+        duration: "Persistente no navegador",
         legalBasis: "Legítimo Interesse / Execução de Funcionalidade Técnica Estritamente Necessária",
       },
     ],

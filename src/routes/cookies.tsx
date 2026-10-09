@@ -5,11 +5,11 @@ import { LEGAL_CONFIG } from "@/config/legal";
 export const Route = createFileRoute("/cookies")({
   head: () => ({
     meta: [
-      { title: "Política de Cookies | NEXORA" },
+      { title: "Política de Cookies | VELTRION" },
       {
         name: "description",
         content:
-          "Política de Cookies da NEXORA. Conheça as tecnologias e os arquivos estritamente necessários empregados para a operação técnica segura de nosso website.",
+          "Política de Cookies da VELTRION. Conheça as tecnologias e os arquivos estritamente necessários empregados para a operação técnica segura de nosso website.",
       },
     ],
   }),

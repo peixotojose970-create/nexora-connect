@@ -5,11 +5,11 @@ import { LEGAL_CONFIG } from "@/config/legal";
 export const Route = createFileRoute("/termos")({
   head: () => ({
     meta: [
-      { title: "Termos de Uso | NEXORA" },
+      { title: "Termos de Uso | VELTRION" },
       {
         name: "description",
         content:
-          "Termos de Uso da NEXORA. Regras, condições gerais e diretrizes para navegação no website institucional e solicitação de serviços.",
+          "Termos de Uso da VELTRION. Regras, condições gerais e diretrizes para navegação no website institucional e solicitação de serviços.",
       },
     ],
   }),
@@ -89,10 +89,10 @@ function TermsPage() {
         </ul>
       </section>
 
-      {/* 4. Serviços da NEXORA */}
+      {/* 4. Serviços da VELTRION */}
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-bold text-zinc-950 tracking-tight">
-          4. Serviços da NEXORA
+          4. Serviços da VELTRION
         </h2>
         <p>
           A {company.brandName} atua na prestação de serviços de desenvolvimento e consultoria em

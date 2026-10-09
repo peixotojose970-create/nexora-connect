@@ -80,18 +80,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "NEXORA | Soluções Digitais para Empresas" },
+      { title: "VELTRION | Estratégia, design e presença digital" },
       {
         name: "description",
         content:
-          "Ajudamos empresas a melhorar sua presença digital através de tecnologia, estratégia, inteligência artificial e criatividade.",
+          "A VELTRION cria experiências digitais que posicionam empresas com clareza, consistência e valor.",
       },
-      { name: "author", content: "NEXORA" },
-      { property: "og:title", content: "NEXORA | Soluções Digitais para Empresas" },
+      { name: "author", content: "VELTRION" },
+      { property: "og:title", content: "VELTRION | Soluções digitais com direção" },
       {
         property: "og:description",
         content:
-          "Transformamos necessidades de negócio em experiências digitais mais claras, profissionais e funcionais.",
+          "Estratégia, design e tecnologia para transformar boas empresas em marcas digitais mais claras e relevantes.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -23,7 +23,7 @@ export function LegalLayout({
     icon === "privacy" ? Shield : icon === "cookies" ? Cookie : FileText;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950 text-zinc-950 dark:text-zinc-100 font-sans selection:bg-[#2563EB] selection:text-white antialiased transition-colors duration-300">
+    <div className="min-h-screen bg-white text-zinc-950 antialiased selection:bg-[#a8c6b8] selection:text-[#1e2c26] transition-colors duration-300 dark:bg-[#121817] dark:text-zinc-100">
       {/* Topbar Institucional Minimalista */}
       <header className="border-b border-zinc-200/80 dark:border-zinc-800 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md sticky top-0 z-40 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -39,8 +39,8 @@ export function LegalLayout({
             <ThemeSelector />
             <div className="flex items-center gap-2">
               <SiteLogo size={28} />
-              <span className="font-extrabold text-sm tracking-tight text-zinc-950 dark:text-white">
-                NEXORA
+              <span className="font-bold text-sm tracking-[0.16em] text-zinc-950 dark:text-white">
+                VELTRION
               </span>
             </div>
           </div>
@@ -78,7 +78,7 @@ export function LegalLayout({
         </nav>
 
         {/* Badge e Título */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/50 border border-blue-100 dark:border-blue-900/50 text-[#2563EB] dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#b9ccbf] bg-[#edf3ef] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#435e50] dark:border-[#456154] dark:bg-[#1f3028] dark:text-[#c4d6cb]">
           <IconComponent className="w-3.5 h-3.5" />
           <span>{badge}</span>
         </div>
@@ -91,7 +91,7 @@ export function LegalLayout({
         </p>
 
         {/* Corpo do Documento */}
-        <div className="space-y-8 text-zinc-700 dark:text-zinc-300 text-base leading-relaxed">
+        <div className="space-y-8 text-base leading-relaxed text-zinc-700 dark:text-zinc-300 [&_a]:text-[#435e50] [&_a]:dark:text-[#c4d6cb] [&_h2]:dark:text-white [&_h3]:dark:text-white [&_strong]:dark:text-white">
           {children}
         </div>
 
@@ -105,7 +105,7 @@ export function LegalLayout({
             <span>Retornar ao site principal</span>
           </Link>
           <span className="text-xs text-zinc-400 dark:text-zinc-500 font-normal">
-            &copy; 2026 NEXORA. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} VELTRION. Todos os direitos reservados.
           </span>
         </div>
       </main>
