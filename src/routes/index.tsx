@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteLogo } from "@/components/SiteLogo";
 import { ThemeSelector } from "@/components/ThemeSelector";
 import { BackgroundGraphics } from "@/components/BackgroundGraphics";
+import { VeltrionHome } from "@/components/VeltrionHome";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Compass, Cpu, Palette } from "lucide-react";
@@ -14,22 +15,22 @@ import { Menu, X, Compass, Cpu, Palette } from "lucide-react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NEXORA | Soluções Digitais para Empresas" },
+      { title: "VELTRION | Estratégia, design e presença digital" },
       {
         name: "description",
         content:
-          "A NEXORA ajuda empresas a melhorar sua presença digital através de tecnologia, estratégia, inteligência artificial e criatividade.",
+          "A VELTRION cria experiências digitais que posicionam empresas com clareza, consistência e valor.",
       },
-      { property: "og:title", content: "NEXORA | Soluções Digitais para Empresas" },
+      { property: "og:title", content: "VELTRION | Soluções digitais com direção" },
       {
         property: "og:description",
         content:
-          "Transformamos necessidades de negócio em experiências digitais mais claras, profissionais e funcionais.",
+          "Estratégia, design e tecnologia para empresas que querem avançar com intenção.",
       },
       { property: "og:type", content: "website" },
     ],
   }),
-  component: NexoraLandingPage,
+  component: VeltrionHome,
 });
 
 const WHATSAPP_LINK =

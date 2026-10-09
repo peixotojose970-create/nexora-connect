@@ -1,58 +1,27 @@
-import React from "react";
 import { Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
 import { SiteLogo } from "./SiteLogo";
 import { ThemeSelector } from "./ThemeSelector";
 
+const contact = "https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20conversar%20com%20a%20VELTRION%20sobre%20um%20projeto%20digital.";
+
 export function SiteFooter() {
   return (
-    <footer className="border-t border-zinc-100 dark:border-zinc-800/80 bg-white dark:bg-zinc-950 py-14 sm:py-16 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-        {/* Bloco Logo e Frase */}
-        <div className="space-y-3">
-          <Link
-            to="/"
-            className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded"
-            aria-label="NEXORA Início"
-          >
-            <SiteLogo size={32} />
-            <span className="font-extrabold text-lg tracking-tight text-zinc-950 dark:text-white flex items-center gap-1">
-              NEXORA
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-            </span>
-          </Link>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 font-normal">
-            Inteligência que faz empresas crescerem.
-          </p>
-        </div>
-
-        {/* Links de Navegação, Seletor de Tema e Legais */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-          <ThemeSelector />
-
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-            <a href="#inicio" className="hover:text-zinc-950 dark:hover:text-white transition-colors">
-              Início
-            </a>
-            <a href="#servicos" className="hover:text-zinc-950 dark:hover:text-white transition-colors">
-              Serviços
-            </a>
-            <a href="#sobre" className="hover:text-zinc-950 dark:hover:text-white transition-colors">
-              Sobre
-            </a>
-            <a href="#como-funciona" className="hover:text-zinc-950 dark:hover:text-white transition-colors">
-              Como funciona
-            </a>
-            <span className="hidden sm:inline-block text-zinc-300 dark:text-zinc-700">|</span>
-            <Link to="/termos" className="hover:text-zinc-950 dark:hover:text-white transition-colors">
-              Termos de Uso
+    <footer className="border-t border-zinc-200 bg-white py-14 dark:border-white/10 dark:bg-[#121817] sm:py-16">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+        <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end">
+          <div>
+            <Link to="/" className="flex items-center gap-3" aria-label="VELTRION — Início">
+              <SiteLogo size={34} />
+              <span className="text-[17px] font-bold tracking-[0.16em]">VELTRION</span>
             </Link>
-            <Link to="/privacidade" className="hover:text-zinc-950 dark:hover:text-white transition-colors">
-              Política de Privacidade
-            </Link>
-            <Link to="/cookies" className="hover:text-zinc-950 dark:hover:text-white transition-colors">
-              Política de Cookies
-            </Link>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">Estratégia, design e tecnologia para empresas que querem avançar com direção.</p>
           </div>
+          <a href={contact} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#294238] dark:text-[#c4d6cb]">Iniciar uma conversa <ArrowUpRight className="size-4" /></a>
+        </div>
+        <div className="mt-12 flex flex-col gap-6 border-t border-zinc-200 pt-6 text-xs text-zinc-500 dark:border-white/10 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap gap-x-5 gap-y-3"><a href="#solucoes" className="hover:text-[#547565]">Soluções</a><a href="#projetos" className="hover:text-[#547565]">Projetos</a><a href="#processo" className="hover:text-[#547565]">Como funciona</a><Link to="/termos" className="hover:text-[#547565]">Termos de Uso</Link><Link to="/privacidade" className="hover:text-[#547565]">Privacidade</Link><Link to="/cookies" className="hover:text-[#547565]">Cookies</Link></div>
+          <div className="flex items-center gap-5"><ThemeSelector /><span>© {new Date().getFullYear()} VELTRION</span></div>
         </div>
       </div>
     </footer>
