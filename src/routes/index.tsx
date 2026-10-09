@@ -437,6 +437,12 @@ function NexoraLandingPage() {
               <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
                 Nosso trabalho passa por entender o que a empresa precisa, definir a melhor direção e criar uma solução que represente melhor sua marca.
               </p>
+              <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
+                Acreditamos que cada negócio tem uma história e desafios próprios. Por isso, unimos escuta próxima e visão estratégica para construir soluções sob medida — sem fórmulas prontas.
+              </p>
+              <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
+                Da primeira conversa à entrega, buscamos simplificar processos, fortalecer marcas e criar experiências digitais que gerem valor real para clientes e equipes.
+              </p>
             </div>
 
             <div className="lg:col-span-5">
